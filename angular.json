@@ -107,5 +107,7 @@
       }
     }
   },
-  "defaultProject": "my-notes"
+  "cli": {
+    "analytics": "5e17c47f-0785-44fd-b0b0-9249aca2d8d5"
+  }
 }
