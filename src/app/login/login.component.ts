@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   loggedIn$!: Observable<any>;
 
-  email = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
   constructor(private auth: AuthService, private router: Router) {}
