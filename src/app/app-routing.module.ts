@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FireguardGuard } from './guards/fireguard.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NotesComponent } from './notes/notes.component';
-import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'notes', component: NotesComponent },
+  { path: 'notes', component: NotesComponent, canActivate: [FireguardGuard] },
   { path: '**', pathMatch: 'full', component: HomeComponent },
 ];
 

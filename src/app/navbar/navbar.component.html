@@ -10,8 +10,8 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/home">Home</a>
-      <a mat-list-item routerLink="/login">Login</a>
-      <a mat-list-item routerLink="/register">Register</a>
+      <a mat-list-item routerLink="/login" *ngIf="!auth.isLoggedIn">Login</a>
+      <a mat-list-item (click)="logout()" *ngIf="auth.isLoggedIn">Logout</a>
       <a mat-list-item routerLink="/notes">Notes</a>
     </mat-nav-list>
   </mat-sidenav>
