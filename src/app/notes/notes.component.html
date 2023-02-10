@@ -1,0 +1,107 @@
+<div class="grid-container" *ngIf="notesData$ | async">
+  <button class="addNote" mat-button (click)="openDialog()">Add Note</button>
+  <mat-grid-list cols="3" rowHeight="350px">
+    <ng-container *ngIf="!(isHandset$ | async)">
+      <mat-grid-tile
+        *ngFor="let note of notesData$ | async"
+        [colspan]="1"
+        [rowspan]="1"
+      >
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <strong> ID: </strong> {{ note.id }}
+              <button
+                mat-icon-button
+                class="more-button"
+                [matMenuTriggerFor]="menu"
+                aria-label="Toggle menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="deleteNote(note.id)">
+                  Delete
+                </button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div class="mainContent">
+              <h2>{{ note.note }}</h2>
+
+              <div class="other">
+                <p><strong> INSTANCE: </strong> {{ note.instance }}</p>
+                <p>
+                  <strong> INSTANCE FIELD: </strong>
+
+                  {{
+                    note.instance_field == null ? "null" : note.instance_field
+                  }}
+                </p>
+                <p><strong> OWNER: </strong>{{ note.owner }}</p>
+                <p>
+                  <strong> DATE CREATED: </strong
+                  >{{ note.date_created.toString().split("T")[0] }}
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    <ng-container *ngIf="isHandset$ | async">
+      <mat-grid-tile
+        *ngFor="let note of notesData$ | async"
+        [colspan]="3"
+        [rowspan]="1"
+      >
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <strong> ID: </strong> {{ note.id }}
+              <button
+                mat-icon-button
+                class="more-button"
+                [matMenuTriggerFor]="menu"
+                aria-label="Toggle menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="deleteNote(note.id)">
+                  Delete
+                </button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div class="mainContent">
+              <h2>{{ note.note }}</h2>
+
+              <div class="other">
+                <p><strong> INSTANCE: </strong> {{ note.instance }}</p>
+                <p>
+                  <strong> INSTANCE FIELD: </strong>
+
+                  {{
+                    note.instance_field == null ? "null" : note.instance_field
+                  }}
+                </p>
+                <p><strong> OWNER: </strong>{{ note.owner }}</p>
+                <p>
+                  <strong> DATE CREATED: </strong
+                  >{{ note.date_created.toString().split("T")[0] }}
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+</div>
+
+<button *ngIf="!(notesData$ | async)" mat-button>Loading...</button>
+
+<ng-container *ngIf="delNotes$ | async"></ng-container>

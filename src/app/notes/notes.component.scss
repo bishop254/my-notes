@@ -1,0 +1,47 @@
+.grid-container {
+  margin: 20px;
+
+  .addNote {
+    margin: 0 20px;
+    background: lightgrey;
+  }
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  min-width: 250px;
+  // height: fit-content;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+
+  .mainContent {
+    display: flex;
+
+    h2 {
+      text-align: center;
+      width: 100%;
+      // border: 1px solid lightgrey;
+      border-radius: 8px;
+      margin: 0 auto;
+      padding: 5px;
+      background: lightgrey;
+    }
+
+    .other {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

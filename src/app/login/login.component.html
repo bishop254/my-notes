@@ -1,0 +1,37 @@
+<div class="contOne">
+  <h1>Write whatever you lived and what you thought.</h1>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="abc@gmail.com"
+        [formControl]="email"
+      />
+      <mat-icon matSuffix>{{
+        !email.errors ? "sentiment_very_satisfied" : "sentiment_satisfied"
+      }}</mat-icon>
+      <mat-hint>Ensure you input a valid email</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        [type]="txtPass"
+        matInput
+        placeholder="*****"
+        [formControl]="password"
+      />
+      <mat-icon style="cursor: pointer" (click)="showHide()" matSuffix>{{
+        txtPass == "password"
+          ? "sentiment_very_satisfied"
+          : "sentiment_satisfied"
+      }}</mat-icon>
+      <mat-hint>Password has to be greater than 7 characters</mat-hint>
+    </mat-form-field>
+  </p>
+  <button mat-button color="accent" (click)="login()">Login</button>
+</div>
