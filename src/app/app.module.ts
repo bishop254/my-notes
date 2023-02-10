@@ -15,7 +15,10 @@ import { NotesComponent } from './notes/notes.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, NotesComponent],
@@ -33,8 +36,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatMenuModule,
     HttpClientModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
