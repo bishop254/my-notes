@@ -20,28 +20,34 @@ export class AuthService {
   }
 
   getNotes() {
-    return this.http.get('http://localhost:6060/allNotes').pipe(
-      map((resp) => {
-        console.log(resp);
-        console.log('resp');
-        return resp;
-      })
-    );
+    return this.http
+      .get('https://long-pink-chameleon-gear.cyclic.app/allNotes')
+      .pipe(
+        map((resp) => {
+          console.log(resp);
+          console.log('resp');
+          return resp;
+        })
+      );
   }
 
   addNote(modal: any) {
-    return this.http.post('http://localhost:6060/addNote', modal).pipe(
-      map((resp) => {
-        console.log(resp);
-        console.log('resp');
-        return resp;
-      })
-    );
+    return this.http
+      .post('https://long-pink-chameleon-gear.cyclic.app/addNote', modal)
+      .pipe(
+        map((resp) => {
+          console.log(resp);
+          console.log('resp');
+          return resp;
+        })
+      );
   }
 
   deleteNote(modal: any) {
     return this.http
-      .delete(`http://localhost:6060/deleteNote/${modal.noteId}`)
+      .delete(
+        `https://long-pink-chameleon-gear.cyclic.app/deleteNote/${modal.noteId}`
+      )
       .pipe(
         map((resp) => {
           console.log(resp);
