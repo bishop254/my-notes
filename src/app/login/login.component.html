@@ -4,22 +4,34 @@
   <p>
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input type="email" matInput placeholder="abc@gmail.com" />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <input
+        type="email"
+        matInput
+        placeholder="abc@gmail.com"
+        [formControl]="email"
+      />
+      <mat-icon matSuffix>{{
+        !email.errors ? "sentiment_very_satisfied" : "sentiment_satisfied"
+      }}</mat-icon>
       <mat-hint>Ensure you input a valid email</mat-hint>
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
-      <input type="password" matInput placeholder="*****" />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <input
+        [type]="txtPass"
+        matInput
+        placeholder="*****"
+        [formControl]="password"
+      />
+      <mat-icon style="cursor: pointer" (click)="showHide()" matSuffix>{{
+        txtPass == "password"
+          ? "sentiment_very_satisfied"
+          : "sentiment_satisfied"
+      }}</mat-icon>
       <mat-hint>Password has to be greater than 7 characters</mat-hint>
     </mat-form-field>
   </p>
-  <button mat-button color="accent">Login</button>
-  <div class="footer">
-    <p><a href="#">Forgot Password?</a></p>
-    <p><span>Not Our Member? </span> <a href="/register">SIGN UP</a></p>
-  </div>
+  <button mat-button color="accent" (click)="login()">Login</button>
 </div>
