@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="grid-container" *ngIf="notesData$ | async">
   <button class="addNote" mat-button (click)="openDialog()">Add Note</button>
   <mat-grid-list cols="3" rowHeight="350px">
     <ng-container *ngIf="!(isHandset$ | async)">
@@ -101,5 +101,7 @@
     </ng-container>
   </mat-grid-list>
 </div>
+
+<button *ngIf="!(notesData$ | async)" mat-button>Loading...</button>
 
 <ng-container *ngIf="delNotes$ | async"></ng-container>
